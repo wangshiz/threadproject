@@ -1,3 +1,5 @@
+package com.thread;
+
 /**
  * Created by @author wangsz on 2020/9/3 22:22
  *
