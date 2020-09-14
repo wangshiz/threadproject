@@ -1,4 +1,4 @@
-package com.thread;
+package com.thread.demo;
 
 /**
  * lambda表达式只能有一行代码的情况下才能简化成一行

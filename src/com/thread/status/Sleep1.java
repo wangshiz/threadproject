@@ -1,7 +1,5 @@
 package com.thread.status;
 
-import com.thread.Ticket;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

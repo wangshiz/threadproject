@@ -1,4 +1,4 @@
-package com.thread;
+package com.thread.demo;
 
 /**
  * 静态代理模式
