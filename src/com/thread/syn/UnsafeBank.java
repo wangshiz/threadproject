@@ -6,7 +6,7 @@ package com.thread.syn;
 public class UnsafeBank {
 
     public static void main(String[] args) {
-        Account account = new Account(100, "结婚基金");
+        Account account = new Account(1000, "结婚基金");
         Drawing you = new Drawing(account, 50, "you");
         Drawing girlfriend = new Drawing(account, 100, "girlfriend");
 
@@ -38,23 +38,28 @@ class Drawing extends Thread {
         this.drawingMoney = drawingMoney;
     }
 
+    //synchronized 默认锁的是this
     @Override
     public void run() {
-        if (account.money - drawingMoney < 0) {
-            System.out.println(Thread.currentThread().getName() + "钱不够了 取不了");
-            return;
-        }
+        //锁的是变化的量
+        synchronized (account) {
+            if (account.money - drawingMoney < 0) {
+                System.out.println(Thread.currentThread().getName() + "钱不够了 取不了");
+                return;
+            }
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        account.money = account.money - drawingMoney;
-        nowMoney = nowMoney + drawingMoney;
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            account.money = account.money - drawingMoney;
+            nowMoney = nowMoney + drawingMoney;
 
-        System.out.println(account.name + "余额为: " + account.money);
-        System.out.println(this.getName() + "手里的钱：" + nowMoney);
+            System.out.println(account.name + "余额为: " + account.money);
+            System.out.println(this.getName() + "手里的钱：" + nowMoney);
+
+        }
 
     }
 }
