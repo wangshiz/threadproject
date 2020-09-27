@@ -5,7 +5,7 @@ package com.thread;
  * 测试：生产者消费者模型---->利用缓冲区解决:管程法
  */
 //生产者 消费者 产品 缓冲区
-public class PC extends Thread{
+public class PC1 extends Thread{
 
     public static void main(String[] args) {
         SynContainer synContainer = new SynContainer();
